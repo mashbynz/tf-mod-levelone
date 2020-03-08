@@ -6,6 +6,8 @@ module "level0" {
 
 }
 
+# RG
+
 # firewall vnet
 resource "azurerm_virtual_network" "firewall" {
   count = var.fw_vnet_enabled == true ? length(keys(var.fw_vnet_config.location)) : 0
