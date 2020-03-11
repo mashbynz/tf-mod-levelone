@@ -1,6 +1,8 @@
 variable "fw_vnet_enabled" {}
-variable "fw_rg_enabled" {}
-variable "la_rg_enabled" {}
+# variable "fw_rg_enabled" {}
+# variable "la_rg_enabled" {}
+variable "level1_network_location" {}
+variable "level1_network_resource_group_name" {}
 
 variable "fw_vnet_config" {
   type = object({
