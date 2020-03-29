@@ -30,6 +30,17 @@ resource "azurerm_recovery_services_vault" "vault" {
   ]
 }
 
+# VNet Peering
+resource "azurerm_virtual_network_peering" "peering" {
+  for_each = var.networking_object.peerings
+
+  name                      = each.value.name
+  resource_group_name       = each.value.resource_group_name
+  virtual_network_name      = each.value.virtual_network_name
+  remote_virtual_network_id = var.level0_virtual_networks[each.value.remote_virtual_network_id].id
+  allow_forwarded_traffic   = each.value.allow_forwarded_traffic
+}
+
 # Key Vault
 # resource "azurerm_key_vault" "example" {
 #   for_each = var.key_vault_object
